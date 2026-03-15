@@ -1,0 +1,159 @@
+/* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+
+    &.extended {
+        /* range: 768-1024 */
+        @include respond(md) {
+            max-width: 1024px;
+            --left-sidebar-max-width: 25%;
+            --right-sidebar-max-width: 30%;
+        }
+
+        /* range: 1024-1280 */
+        @include respond(lg) {
+            max-width: 1280px;
+            --left-sidebar-max-width: 25%;
+            --right-sidebar-max-width: 22%;
+        }
+    }
+
+    &.compact {
+        @include respond(md) {
+            --left-sidebar-max-width: 25%;
+            max-width: 768px;
+        }
+
+        @include respond(lg) {
+            max-width: 1024px;
+            --left-sidebar-max-width: 20%;
+        }
+
+        @include respond(xl) {
+            max-width: 1280px;
+        }
+    }
+	@media (min-width: 1024px) {
+  .article-list--compact {
+    display: grid;
+    // 目前是两列，如需三列，则后面再加一个1fr，以此类推
+    grid-template-columns: 1fr 1fr ;
+    background: none;
+    box-shadow: none;
+    gap: 1rem;
+
+    article {
+      background: var(--card-background);
+      border: none;
+      box-shadow: var(--shadow-l2);
+      margin-bottom: 8px;
+      margin-right: 8px;
+      border-radius: 16px;
+    }
+  }
+  
+}
+
+}
+/*主页文章图片样式*/
+$image-scale: 1.2;
+.article-list article .article-image img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  //不同显示器（手机，小屏幕电脑，大屏幕电脑）显示的图片高度大小
+  @include respond(sm) {
+    height: 305px;
+  }
+
+  @include respond(md) {
+    height: 305px;
+  }
+  @include respond(xl) {
+    height: 325px;
+  }
+}
+
+/*主页文章图片圆角*/
+.article-list article {
+  --card-border-radius: 24px;
+}
+
+/*文章标签圆角*/
+.article-category a, .article-tags a {
+  border-radius: 11px;
+}
+
+
+/*鼠标移动到文章图片放大*/
+.article-list article .article-image {
+  position: relative;
+  overflow: hidden; //不显示超出的部分
+}
+
+.article-list article .article-image img:hover {
+  transform: scale($image-scale); //放大尺寸
+}
+
+.article-list article .article-image img {
+  transition: transform 0.85s ease-in-out;//持续时间
+}
+/*文章内部-页脚-相关文章图片圆角*/
+.article-list--compact article .article-image img {
+  border-radius: 17%;
+}
+
+
+/*文章内部-页脚-相关文章图片放大动画*/
+.article-list--compact article > a {
+  transition: .6s ease;
+}
+
+.article-list--compact article > a:hover {
+  transform: scale(1.03, 1.03);
+  overflow: visible;
+}
+/*------------------右侧导航栏--------------*/
+/*搜索菜单动画*/
+.search-form.widget {
+  transition: transform 0.6s ease;
+}
+
+.search-form.widget:hover {
+  transform: scale(1.1, 1.1);
+}
+
+
+/*归档小图标放大动画*/
+.widget.archives .widget-archive--list {
+  transition: transform .3s ease;
+}
+
+.widget.archives .widget-archive--list:hover {
+  transform: scale(1.05, 1.05);
+}
+
+
+/*右侧标签放大动画*/
+.tagCloud .tagCloud-tags a {
+  border-radius: 10px;
+  font-size: 1.4rem;
+  transition: transform .3s ease;
+}
+
+.tagCloud .tagCloud-tags a:hover {
+  transform: scale(1.1, 1.1);
+}
+
+// .post-content p:has(> img:nth-child(2)){column-count:2;column-gap:8px;margin:6px 0;}
+// .post-content p:has(> img:nth-child(3)){column-count:3;}
+// .post-content p:has(> img:nth-child(4)){column-count:4;}
+// .post-content p:has(> img:nth-child(5)){column-count:5;}
+// .post-content p:has(> img:nth-child(6)){column-count:4;}
+// .post-content p:has(> img:nth-child(2)) img{display:inherit;}
+// .post-content p:has(> img:nth-child(6)) img{margin-bottom:8px;}
+
+
+

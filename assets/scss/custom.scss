@@ -1,0 +1,89 @@
+/* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+
+    &.extended {
+        /* range: 768-1024 */
+        @include respond(md) {
+            max-width: 1024px;
+            --left-sidebar-max-width: 25%;
+            --right-sidebar-max-width: 30%;
+        }
+
+        /* range: 1024-1280 */
+        @include respond(lg) {
+            max-width: 1280px;
+            --left-sidebar-max-width: 25%;
+            --right-sidebar-max-width: 22%;
+        }
+    }
+
+    &.compact {
+        @include respond(md) {
+            --left-sidebar-max-width: 25%;
+            max-width: 768px;
+        }
+
+        @include respond(lg) {
+            max-width: 1024px;
+            --left-sidebar-max-width: 20%;
+        }
+
+        @include respond(xl) {
+            max-width: 1280px;
+        }
+    }
+	@media (min-width: 1024px) {
+  .article-list--compact {
+    display: grid;
+    // 目前是两列，如需三列，则后面再加一个1fr，以此类推
+    grid-template-columns: 1fr 1fr 1fr;
+    background: none;
+    box-shadow: none;
+    gap: 1rem;
+
+    article {
+      background: var(--card-background);
+      border: none;
+      box-shadow: var(--shadow-l2);
+      margin-bottom: 8px;
+      margin-right: 8px;
+      border-radius: 16px;
+    }
+  }
+  
+}
+
+}
+
+// 【Stack主题鼠标样式写法】
+// default光标图片
+body,
+html,
+.article-content img {
+  cursor: url(../mouse/default.png),
+  auto !important;
+}
+
+// pointer光标图片
+a:hover,
+button:hover,
+.copyCodeButton:hover,
+#dark-mode-toggle {
+  cursor: url(../mouse/default.png),
+  auto;
+}
+
+// text光标图片
+input:hover,
+.site-description,
+.article-subtitle,
+.article-content span,
+.article-content li,
+.article-content p {
+  cursor: url(../mouse/text.png),
+  auto;
+}
