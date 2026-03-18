@@ -1,6 +1,8 @@
 # hugo-stack-web
 
+hugo server -D / hugo server   构建并运行 
 
+hugo new post/*/index.md   新建文章
 
 ![](Images/3.bmp)
 
